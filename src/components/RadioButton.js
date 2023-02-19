@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { View, Text, StyleSheet, TouchableOpacity } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useLoginStore } from '../zustand';
 
 const RadioButton = ({ value, onPress, selected }) => (
   <TouchableOpacity onPress={onPress} activeOpacity={0.6} style={styles.radioButtonContainer}>
@@ -12,14 +13,20 @@ const RadioButton = ({ value, onPress, selected }) => (
 );
 
 export const RadioForm = () => {
-  const [selectedValue, setSelectedValue] = useState("Empresa")
+  const [selectedValue, setSelectedValue] = useState("Barbearia")
+  const setTypeUser = useLoginStore(state => state.setTypeUser)
+
+  function update(user) {
+    setSelectedValue(user)
+    setTypeUser(user)
+  }
 
   return (
     <View style={styles.container}>
       <RadioButton
-        value="Empresa"
-        selected={selectedValue === 'Empresa'}
-        onPress={() => setSelectedValue('Empresa')}
+        value="Barbearia"
+        selected={selectedValue === 'Barbearia'}
+        onPress={() => update('Barbearia')}
       />
       <Text style={styles.description}>
         Informe seus horários disponíveis para
@@ -31,7 +38,7 @@ export const RadioForm = () => {
       <RadioButton
         value="Cliente"
         selected={selectedValue === 'Cliente'}
-        onPress={() => setSelectedValue('Cliente')}
+        onPress={() => update('Cliente')}
       />
       <Text style={styles.description}>
         Visualizar barbearias disponíveis, 
