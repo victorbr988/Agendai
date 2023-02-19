@@ -17,7 +17,7 @@ const headerStyles = StyleSheet.create({
   container: {
     marginTop: 30,
     flexDirection: "row",
-    marginLeft: 30,
+    marginLeft: 20,
     alignItems: 'center',
     marginBottom: "10%"
   },
