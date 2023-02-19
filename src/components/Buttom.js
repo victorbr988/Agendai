@@ -1,16 +1,16 @@
 import { TouchableOpacity, StyleSheet, Text } from "react-native";
 
-export function ButtonPrimary({ nameButton }) {
+export function ButtonPrimary({ nameButton, navigation }) {
   return (
-    <TouchableOpacity style={buttonStyles.container} activeOpacity={0.8}>
+    <TouchableOpacity onPress={() => navigation.navigate("Login")} style={buttonStyles.container} activeOpacity={0.8}>
       <Text style={buttonStyles.text}>{nameButton}</Text>
     </TouchableOpacity>
   )
 }
 
-export function ButtonSecondary({ nameButton }) {
+export function ButtonSecondary({ nameButton, navigation }) {
   return (
-    <TouchableOpacity activeOpacity={0.8}>
+    <TouchableOpacity onPress={() => navigation.navigate("Cadastro")} activeOpacity={0.8}>
       <Text style={buttonStyles.textSecondary}>{nameButton}</Text>
     </TouchableOpacity>
   )
@@ -22,6 +22,7 @@ const buttonStyles = StyleSheet.create({
     paddingHorizontal: 40,
     paddingVertical: 8,
     backgroundColor: "#DDD6FE",
+    alignItems: 'center'
   },
   text: {
     color: "#7C3AED",
