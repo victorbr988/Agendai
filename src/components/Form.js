@@ -7,7 +7,9 @@ export function useForm(typeForm) {
   const formsGroups = {
     "Select_user": ChoiceUser,
     "Login_user_client": UserClientForm,
-    "Login_user_barber": UserBarberForm
+    "Login_user_barber": UserBarberForm,
+    "Signup_user_barber": UserBarberFormSignup,
+    "Signup_user_client": UserClientFormSignup
   }
 
   return formsGroups[typeForm];
@@ -81,6 +83,100 @@ function UserBarberForm({ navigation }) {
           style={formStyle.input}
           placeholderTextColor="#111827"
           placeholder="Nome da barbearia"
+        />
+      </View>
+
+      <ButtonPrimary navigation={navigation} nameButton="Entrar" />
+    </View>
+  )
+}
+
+function UserBarberFormSignup({ navigation }) {
+  const [cnpjValue, setCnpjValue] = useState("")
+  const [nameValue, setNameValue] = useState("")
+  const [phoneNumber, setPhoneNumber] = useState("")
+  const [password, setPassword] = useState("")
+
+  return (
+    <View>
+      <Text style={formStyle.text}>Cadastro como Barbearia</Text>
+      
+      <View style={formStyle.inputGroup}>
+        <TextInput
+          value={cnpjValue}
+          onChange={setCnpjValue}
+          style={formStyle.input} 
+          placeholderTextColor="#111827"
+          placeholder="CPF/CNPJ sem pontos ou traços" 
+        />
+        <TextInput
+          value={nameValue}
+          onChange={setNameValue}
+          style={formStyle.input}
+          placeholderTextColor="#111827"
+          placeholder="Nome da barbearia"
+        />
+        <TextInput
+          value={phoneNumber}
+          onChange={setPhoneNumber}
+          style={formStyle.input}
+          placeholderTextColor="#111827"
+          placeholder="Telefone com DDD"
+        />
+        <TextInput
+          value={password}
+          secureTextEntry={true}
+          onChange={setPassword}
+          style={formStyle.input}
+          placeholderTextColor="#111827"
+          placeholder="Senha"
+        />
+      </View>
+
+      <ButtonPrimary navigation={navigation} nameButton="Entrar" />
+    </View>
+  )
+}
+
+function UserClientFormSignup({ navigation }) {
+  const [cnpjValue, setCnpjValue] = useState("")
+  const [nameValue, setNameValue] = useState("")
+  const [phoneNumber, setPhoneNumber] = useState("")
+  const [password, setPassword] = useState("")
+
+  return (
+    <View>
+      <Text style={formStyle.text}>Cadastro como Cliente</Text>
+      
+      <View style={formStyle.inputGroup}>
+        <TextInput
+          value={cnpjValue}
+          onChange={setCnpjValue}
+          style={formStyle.input} 
+          placeholderTextColor="#111827"
+          placeholder="CPF sem pontos ou traços" 
+        />
+        <TextInput
+          value={nameValue}
+          onChange={setNameValue}
+          style={formStyle.input}
+          placeholderTextColor="#111827"
+          placeholder="Nome e sobrenome"
+        />
+        <TextInput
+          value={phoneNumber}
+          onChange={setPhoneNumber}
+          style={formStyle.input}
+          placeholderTextColor="#111827"
+          placeholder="Telefone com DDD"
+        />
+        <TextInput
+          value={password}
+          secureTextEntry={true}
+          onChange={setPassword}
+          style={formStyle.input}
+          placeholderTextColor="#111827"
+          placeholder="Senha"
         />
       </View>
 
